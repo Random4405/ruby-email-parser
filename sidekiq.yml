@@ -1,0 +1,5 @@
+:require:  ./sidekiq.rb
+:concurrency: 25
+:queues:
+  - [default, 1]
+  - [keys, 1]
