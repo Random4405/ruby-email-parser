@@ -20,6 +20,8 @@ GEM
     connection_pool (2.2.1)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    et-orbi (1.0.8)
+      tzinfo
     ffi (1.9.18)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -44,6 +46,8 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rubyzip (1.2.1)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     selenium-webdriver (3.7.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
@@ -52,7 +56,15 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.4, < 5)
+    sidekiq-limit_fetch (3.4.0)
+      sidekiq (>= 4)
+    sidekiq-scheduler (2.1.10)
+      redis (>= 3, < 5)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 3)
+      tilt (>= 1.4.0)
     thread_safe (0.3.6)
+    tilt (2.0.8)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -73,6 +85,8 @@ DEPENDENCIES
   redis
   rest-client
   sidekiq
+  sidekiq-limit_fetch
+  sidekiq-scheduler
   watir
 
 BUNDLED WITH

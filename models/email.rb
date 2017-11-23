@@ -1,15 +1,16 @@
 require 'active_record'
 require 'pg'
+require 'csv'
 
 class Email < ActiveRecord::Base
   establish_connection(
     adapter:  'postgresql',
     database: 'email_parser_development',
-    pool: 50
+    pool: 200
   )
 
   def self.to_csv
-    attributes = %w{id email score}
+    attributes = %w{email}
     CSV.open("emails.csv", "wb", headers: true) do |csv|
       csv << attributes
       all.each do |user|

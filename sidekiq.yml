@@ -1,5 +1,16 @@
 :require:  ./sidekiq.rb
-:concurrency: 25
+:concurrency: 45
+:schedule:
+  keys_worker_1:
+    every: ['30s', first_in: '0s']
+    queue: keys
+    class: HighloadWorker
+  keys_worker_2:
+    every: ['30s', first_in: '0s']
+    queue: keys
+    class: HighloadWorker
 :queues:
   - [default, 1]
-  - [keys, 1]
+  - [keys, 2]
+:limits:
+  keys: 15

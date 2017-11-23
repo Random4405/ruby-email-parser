@@ -10,7 +10,7 @@ require_relative 'lib/interface'
 require_relative 'workers/keys_worker'
 
 interface = Interface.new
-interface_elements = %w[ logo license stats menu ]
+interface_elements = %w[ logo license menu ]
 interface_elements.each do |elem|
   interface.draw_empty_line
   interface.send("draw_#{elem}")

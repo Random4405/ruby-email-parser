@@ -1,6 +1,7 @@
 require 'watir'
 require 'active_record'
 require 'nokogiri'
+require 'sidekiq-scheduler'
 require_relative '../lib/solve_captcha'
 require_relative '../models/key'
 
@@ -31,11 +32,15 @@ class KeysWorker
     @browser.text_field(name: 'city').set 'Minsk'
     @browser.select_list(name: 'country_code').select 'Belarus'
     @browser.checkbox(name: 'tos_accepted').check
-    element = @browser.textarea(id: 'g-recaptcha-response')
-    script = "arguments[0].setAttribute('style', '')"
-    @browser.execute_script(script, element)
-    @browser.textarea(id: 'g-recaptcha-response').set solve_captcha
-    @browser.label(class: 'login_button').click
+    begin
+      element = @browser.textarea(id: 'g-recaptcha-response')
+      script = "arguments[0].setAttribute('style', '')"
+      @browser.execute_script(script, element)
+      @browser.textarea(id: 'g-recaptcha-response').set solve_captcha
+      @browser.label(class: 'login_button').click
+    rescue
+      @browser.close
+    end
   end
 
   def solve_captcha

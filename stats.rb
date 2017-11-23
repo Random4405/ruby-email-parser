@@ -12,9 +12,9 @@ loop do
   print "Available keys: #{new_keys.to_s.colorize(:green)} | " \
     "Validated emails: #{full_emails.to_s.colorize(:green)}/#{all_emails} " \
     "(#{(full_emails * 100)/all_emails}%) | " \
-    "Need keys: #{(((all_emails - full_emails)/250) - new_keys).to_s.colorize(:red)} | " \
-    "Estimated time: #{((all_emails / ((full_emails - first_emails)/5.0)) / 60).round.to_s.colorize(:yellow)} minutes | " \
-    "Speed: #{((full_emails - first_emails)/5.0).to_s.colorize(:green)} emails/s\r"
+    "Need keys: #{(((all_emails - full_emails)/250) - new_keys).to_s.colorize(:red)} \r"
+    # "Estimated time: #{((all_emails / ((full_emails - first_emails)/5.0)) / 60).round.to_s.colorize(:yellow)} minutes | " \
+    # "Speed: #{((full_emails - first_emails)/5.0).to_s.colorize(:green)} emails/s\r"
 end
 
 

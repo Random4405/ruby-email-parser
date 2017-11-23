@@ -1,5 +1,7 @@
 require_relative 'workers/email_worker'
 require_relative 'workers/keys_worker'
+require_relative 'workers/highload_worker'
+require 'sidekiq-limit_fetch'
 require 'active_record'
 require 'redis'
 

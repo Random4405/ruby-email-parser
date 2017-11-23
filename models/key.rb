@@ -5,6 +5,6 @@ class Key < ActiveRecord::Base
   establish_connection(
     adapter:  'postgresql',
     database: 'email_parser_development',
-    pool: 50
+    pool: 200
   )
 end

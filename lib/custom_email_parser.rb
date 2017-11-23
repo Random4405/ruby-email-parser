@@ -6,7 +6,7 @@ class CustomEmailParser
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   def process_emails
-    Email.where(score: nil).each do |email|
+    Email.where(score: nil).limit(5000).each do |email|
       ::EmailWorker.perform_async(email_id: email.id) if is_a_valid_email?(email.email)
     end
   end
